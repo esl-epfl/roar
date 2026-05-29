@@ -88,4 +88,4 @@ The repository provides code to :
 
 {{< github repo="esl-epfl/szcore" >}}
 
-Repository that implements a Continuous Integration pipeline for the evaluation of seizure detection algorithms. This is the repository used to populate the [benchmark page](/benchmark).
+Repository that implements a Continuous Integration pipeline for the evaluation of seizure detection algorithms.

@@ -17,10 +17,6 @@ SzCORE is published in [Epilepsia](https://doi.org/10.1111/epi.18113) !
 {.text-xl}
 {{< /alert >}}
 
-[Here](#papers-that-use-szcore) you will find a list of papers that make use of the framework.
-
----
-
 ## Scalp EEG datasets
 
 To the best of our knowledge, there currently are three publicly available datasets of scalp EEG from people with epilepsy annotated by medical specialists that contain at least 10 subjects and at least 100 hours of recording.
@@ -244,6 +240,3 @@ We explicitly avoid using metrics that rely on a count of FN, such as specificit
 
 A library that computes these different scoring methods and metrics is available on [Github](https://github.com/esl-epfl/epilepsy_performance_metrics). As an input, it uses reference and hypothesis annotations provided by the user.
 
-## Papers that use SzCORE
-
-{{< citations >}}

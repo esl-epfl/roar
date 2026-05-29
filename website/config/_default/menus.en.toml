@@ -9,17 +9,7 @@
   weight = 20
 
 [[main]]
-  name = "Benchmark"
-  pageRef = "benchmark"
-  weight = 30
-
-[[main]]
-  name = "Challenge"
-  pageRef = "challenge"
-  weight = 35
-
-[[main]]
   identifier = "github"
   pre = "github"
-  url = "https://github.com/esl-epfl/szcore"
-  weight = 40
+  url = "https://github.com/esl-epfl/roar"
+  weight = 30

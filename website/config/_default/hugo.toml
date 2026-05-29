@@ -3,7 +3,7 @@
 # https://blowfish.page/docs/getting-started/
 
 theme = "blowfish" # UNCOMMENT THIS LINE
-baseURL = "https://epilepsybenchmarks.com"
+baseURL = "https://esl-epfl.github.io/roar/"
 defaultContentLanguage = "en"
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
@@ -15,8 +15,6 @@ buildDrafts = false
 buildFuture = false
 
 enableEmoji = true
-
-googleAnalytics = "G-N1RGTDCJ1J"
 
 [pagination]
   pagerSize = 100

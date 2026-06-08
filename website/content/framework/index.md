@@ -1,7 +1,19 @@
 ---
-title: "SzCORE framework for validation of epileptic seizure detection algorithms"
-description: "Here you can find a description of the SzCORE framework for validation of seizure detection algorithms."
+title: "ROAR framework for validation of cough detection algorithms"
+description: "Here you can find a description of the framework for validation of cough detection algorithms."
 ---
+
+## Goals for objective cough monitoring 
+
+### What needs to be measured?
+
+### How are current works reporting results?
+
+## Proposition 1: Event-based evaluation framework
+
+## Proposition 2: Reporting meaningful algorithm performance metrics
+
+
 
 Methodological choices for the validation of automated seizure detection algorithms have a large influence on the reported results. In particular the datasets used along with the [cross-validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) strategy and performance metrics can lead to radically different results for the evaluation of a given algorithm. This has been illustrated in several publications that investigate the effect of different methods for computing performance metrics \[[1](https://arxiv.org/pdf/2302.10672.pdf), [2](https://doi.org/10.1007/978-3-030-67494-6_8)\], in publications that investigate the effect of different data segmentation methods to divide a dataset into a training and testing set \[[1](https://arxiv.org/pdf/2302.10672.pdf), [3](https://doi.org/10.3390/app13074262)\], and is a well-know limitation of current reviews of seizure detection algorithms \[[4](https://doi.org/10.1111/EPI.14052)\].
 

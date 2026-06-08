@@ -21,12 +21,12 @@ The goal of the ROAR is to contribute Open Research Data (ORD), community guidel
 
 ## Website structure
 
-- [Cough event definition]({{< ref "/definition" >}}): 
+- [Cough event definition and data annotation guidelines]({{< ref "/definition" >}}): 
     - Information about the physiological mechanism behind cough, which informs our data labeling, annotation, and evaluation standards
 - [Open data for cough counting]({{< ref "/dataset" >}}): 
     - Description of an open dataset for cough detection, including its content and structure. 
-- [Data labeling, annotation, and validatio framework]({{< ref "/framework" >}}): 
-    - Description of an open dataset for cough detection, including its content and structure. 
+- [Algorithm validatio framework]({{< ref "/framework" >}}): 
+    - Proposed framework for measuring the cough detection performance of automatic tools.
 - [Tools]({{< ref "/tools" >}}):
     - Tools for implementing the ROAR methodology for cough event detection
 

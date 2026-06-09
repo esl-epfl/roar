@@ -1,91 +1,76 @@
 ---
-title: "Tools"
-description: "We provide tools to streamline the processing of EEG for the task of automated seizure detection."
+title: "Open cough counting dataset"
+description: "Description of an open dataset for cough detection."
 ---
 
-We provide certain tools to encourage reproducibility and consistency of results reported in the field of automated seizure detection algorithm.
+To advance the field of automatic cough counting and enable a fair comparison of different algorithms, we contribute the first publicly accessible, finely-labeled cough biosignal dataset. The public dataset contains 227 minutes of biosignals and nearly 4,300 annotated cough events.
 
-## epilepsy2bids
+## Data access
 
-> A library to convert datasets to BIDS and to manipulate BIDS files.
+The dataset can be downloaded from this [Zenodo database](https://zenodo.org/records/7562332).
 
-{{< github repo="esl-epfl/epilepsy2bids" >}}
+## Data collection
 
-Library for converting EEG datasets of people with epilepsy to [EEG-BIDS](https://doi.org/10.1038/s41597-019-0104-8) compatible datasets. These datasets comply with the [ILAE and IFCN minimum recording standards](https://doi.org/10.1016/j.clinph.2023.01.002). They provide annotations that are [HED-SCORE](http://arxiv.org/pdf/2310.15173) compatible. The datasets are formatted to be operated by the [SzCORE seizure validation framework](https://doi.org/10.1111/epi.18113).
+### Signals 
+The dataset contains biosignals collected using a nocel lightweight, battery-powered device containing the following sensors:
+* Acoustic - two microphones - one facing toward the body and one facing away from it - each sampled at 16 kHz
+* Kinematic - an interial measurement unit - containing accelerometer and gyroscope signals - sampled at 100 Hz
 
-The library provides tools to:
+![Data collection device](img/sideways_person_sensors_v2.png "Data collection device")
 
-- Convert EEG datasets to BIDS.
-- Load and manipulate EDF files.
-- Load and manipulate seizure annotation files.
+### Subjects
 
-Currently, the following datasets are supported:
+Recordings were collected from 15 healthy subjects (10 male, 10 female; age 26.5 ± 6.5 years; body mass index (BMI) 22.6 ± 4.5 kilograms per square meter). Institutional review board approval was obtained (HREC No.: 085-2022) and all participants signed an informed consent prior to data acquisition. 
 
-- [PhysioNet CHB-MIT Scalp EEG Database v1.0.0](https://doi.org/10.13026/C2K01R)
-- [KULeuven SeizeIT1](https://doi.org/10.48804/P5Q0OJ)
-- [Siena Scalp EEG Database v1.0.0](https://doi.org/10.13026/s309-a395)
-- [TUH EEG Seizure Corpus](https://isip.piconepress.com/projects/nedc/html/tuh_eeg/)
 
-## timescoring
+### Non-cough sounds
 
-{{< github repo="esl-epfl/timescoring" >}}
+In addition to coughs, the subjects produced the following sounds that could possibly be confused with coughing:
+* Laughing
+* Throat clearing
+* Deep breathing
 
-We built a library that provides different scoring methodologies to compare a reference time series with binary annotation (ground-truth annotations of the neurologist) to hypothesis binary annotations (provided by a machine learning pipeline). These different scoring methodologies provide a count of correctly identified events (True Positives) as well as missed events (False Negatives) and wrongly marked events (False positions)
+### Environmental noise
 
-In more details, we measure performance on the level of:
+To assess how well classifiers perform under real-life noise conditions, several noise factors were intentionally added to the experimental setup. These noises came in the form of audio and kinematic noise.
 
-- Samples : Performance metric that threats every label sample independently.
-- Events (e.g. epileptic seizure) : Classifies each event in both reference and hypothesis based on overlap of both.
+Audio noise:
+* Traffic
+* Music
+* Bystander cough
 
-Both methods are illustrated in the following figures :
+Kinematic noise:
+* Walking
 
-![Illustration of sample based scoring.](https://user-images.githubusercontent.com/747240/248309097-b7f76fde-c87a-41df-812d-9821375b640e.png)
+## Dataset structure
 
-![Illustration of event based scoring.](https://user-images.githubusercontent.com/747240/248308898-64b4ae39-d02f-4f06-9b10-f07aaf6110d1.png)
+The files are arranged in a hierarchical structure as shown in the figure below. For each experimental condition, there are three to four corresponding files: .wav audio files for the body-facing and outward-facing microphones, a .csv file for the IMU data, and in the case of cough recordings, a .json file containing the cough location annotations.  The gender and BMI of each subject are recorded in the biodata.json file.
 
-## szcore-evaluation
 
-{{< github repo="esl-epfl/szcore-evaluation" >}}
-
-The library provides a single function to evaluate a set of annotations.
-
-```python
-def evaluate_dataset(
-    reference: Path, hypothesis: Path, outFile: Path, avg_per_subject=True
-) -> dict:
-    """
-    Compares two sets of seizure annotations accross a full dataset.
-
-    Parameters:
-    reference (Path): The path to the folder containing the reference TSV files.
-    hypothesis (Path): The path to the folder containing the hypothesis TSV files.
-    outFile (Path): The path to the output JSON file where the results are saved.
-    avg_per_subject (bool): Whether to compute average scores per subject or
-                            average across the full dataset.
-
-    Returns:
-    dict. return the evaluation result. The dictionary contains the following
-          keys: {'sample_results': {'sensitivity', 'precision', 'f1', 'fpRate',
-                    'sensitivity_std', 'precision_std', 'f1_std', 'fpRate_std'},
-                 'event_results':{...}
-                 }
-    """
+```txt
+Subject ID/
+├── Trial 1/
+│   ├── Sit/
+│   │   ├── No noise
+|   |   |    ├── Cough
+│   │   |    |   ├── body-facing-mic.wav
+│   │   |    |   ├── outward-facing-mic.wav
+│   │   |    |   ├── imu.csv
+│   │   |    |   └── ground-truth.json
+|   |   |    ├── Laugh
+│   │   |    |   ├── ...
+|   |   |    ├── Deep breathing
+│   │   |    |   ├── ...
+|   |   |    └── Throat clearing
+│   │   |        ├── ...
+|   |   ├── Traffic
+│   │   |    ├── ...
+|   |   ├── Music
+│   │   |    ├── ...
+|   |   ├── Bystander cough
+│   │   |    ├── ...
+│   ├── Walk
+│   │   ├── ...
+|   ├── biodata.json
+| ...
 ```
-
-## sz-validation-framework
-
-{{< github repo="esl-epfl/sz-validation-framework" >}}
-
-Example code that uses the framework for the validation of EEG based automated seizure detection algorithms.
-
-The repository provides code to :
-
-1. Convert EDF files from most open scalp EEG datasets of people with epilepsy to a standardized format
-2. Convert seizure annotations from these datasets to a standardized format.
-3. Evaluate the performance of seizure detection algorithm.
-
-## szcore
-
-{{< github repo="esl-epfl/szcore" >}}
-
-Repository that implements a Continuous Integration pipeline for the evaluation of seizure detection algorithms.

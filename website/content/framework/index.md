@@ -38,7 +38,7 @@ In order to overcome the issues with evaluating algorithm success based on data 
 
 ![Event-based scoring example](img/event_based_scoring.png "Event-based scoring example")
 
-Unlike window-based metrics, these event-based metrics measure the ability of an algorithm to correctly identify the temporal locations of annotated events. True positive events are determined based on the overlap between individual true and predicted cough events, including some tolerance around the ground-truth locations. We suggest using a tolerance value of 0.25 s, which corresponds to the time required for the lungs to compress before a cough, as well as the minimum expiratory phase following a cough. For more information about these the different phases of coughs used to set these thresholds, check out our [cough event definition page]({{< ref "/../definition" >}}).
+Unlike window-based metrics, these event-based metrics measure the ability of an algorithm to correctly identify the temporal locations of annotated events. True positive events are determined based on the overlap between individual true and predicted cough events, including some tolerance around the ground-truth locations. We suggest using a tolerance value of 0.25 s, which corresponds to the time required for the lungs to compress before a cough, as well as the minimum expiratory phase following a cough. For more information about these the different phases of coughs used to set these thresholds, check out our cough event definition page.
 
 Overall, we propose an eventbased evaluation framework to identify individual cough onsets and offsets, providing precise information on cough patterns to assess disease severity and treatment efficacy.
 
